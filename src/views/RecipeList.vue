@@ -14,6 +14,7 @@
         v-for="(recipe, index) in recipes"
         :key="recipe.id"
         :recipe="recipe"
+        @click="openUrl(recipe.url)"
       />
       <LoadingCard v-for="index in loadingCards" :key="index"></LoadingCard>
     </div>
@@ -22,6 +23,7 @@
 
 <script>
 // @ is an alias to /src
+/* eslint-disable */
 import RecipeCard from "@/components/RecipeCard.vue";
 import RecipeCategory from "@/components/RecipeCategory.vue";
 import LoadingCard from "@/components/LoadingCard.vue";
@@ -87,7 +89,7 @@ export default {
     loadCategories() {
       this.loading = true;
       RecipesService.getRecipes("/categories").then((response) => {
-        this.categories = response.data.categories.slice(0, 20);
+        this.categories = response.data.categories.slice(500, 520);
       });
     },
     scrollTrigger() {
@@ -113,6 +115,11 @@ export default {
       cards.forEach((card) => {
         observer.observe(card);
       });
+    },
+    openUrl(url) {
+      if (url) {
+        window.open(url, "_blank");
+      }
     },
   },
 };
