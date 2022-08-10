@@ -1,3 +1,5 @@
+Becouse i was facing with cors issue, i have used this repository for bypass errors.
+https://github.com/Rob--W/cors-anywhere
 # recipesapp
 
 ## Project setup
